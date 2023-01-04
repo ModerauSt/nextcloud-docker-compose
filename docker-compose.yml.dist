@@ -30,7 +30,7 @@ services:
     restart: unless-stopped
     image: nextcloud:fpm-alpine
     ports:
-    - "127.0.0.1:9000:9000"
+    - "5.75.251.81:9000:9000"
     volumes:
     - ./nextcloud:/var/www/html:rw
 
@@ -38,22 +38,22 @@ services:
     restart: unless-stopped
     image: mariadb:latest
     ports:
-    - 127.0.0.1:3306:3306
+    - 5.75.251.81:3306:3306
     volumes:
     - ./databases/mariadb:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=rootroot
     - MYSQL_ROOT_HOST=%
     - MYSQL_DATABASE=nextcloud
-    - MYSQL_USER=nextcloud
-    - MYSQL_PASSWORD=nextcloud_pass
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=Server5034
 
   phpmyadmin:
     restart: unless-stopped
     image: phpmyadmin/phpmyadmin
     ports:
-    - 127.0.0.1:8080:80
+    - 5.75.251.81:8080:80
     environment:
     - PMA_HOST=mariadb
-    - PMA_USER=nextcloud
-    - PMA_PASSWORD=nextcloud_pass
+    - PMA_USER=admin
+    - PMA_PASSWORD=Server5034
